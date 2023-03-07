@@ -24,6 +24,13 @@ startButton.addEventListener("click", function () {
   }
 });
 
+resetButton.addEventListener("click", function () {
+  clearInterval(timer);
+  seconds = 60;
+  pomodoroMinutes_span.innerHTML = workMinutes;
+  pomodoroSeconds_span.innerHTML = "00";
+});
+
 let remainingTime = function startTimer() {
   running = true;
   start_p.innerHTML = "Stop";
