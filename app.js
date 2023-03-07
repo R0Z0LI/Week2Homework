@@ -35,6 +35,7 @@ function main() {
 
   resetButton.addEventListener("click", function () {
     clearInterval(timer);
+    pomodoroText.innerHTML = "Pomodoro 1";
     running = false;
     start_p.innerHTML = "Start";
     seconds = 60;
@@ -79,7 +80,7 @@ let remainingTime = function startTimer() {
         }
       } else {
         remainingWorkMinutes = workMinutes - 1;
-        pomodoroText.innerHTML = "Pomodoro " + (sessionCounter % 2) + 1;
+        pomodoroText.innerHTML = "Pomodoro " + shortBreakCounter;
         sessionCounter++;
       }
     }
