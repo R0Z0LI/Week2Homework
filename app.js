@@ -13,27 +13,73 @@ let pomodoroSeconds_span = document.getElementById("second-counter");
 const startButton = document.getElementById("buttons__start");
 const resetButton = document.getElementById("buttons__reset");
 const start_p = document.getElementById("start");
+const itemList = document.querySelector(".settings");
+const workTimeMinutes_span = document.getElementById("work-time-minutes");
+const shortBreakMinutes_span = document.getElementById("short-break-minutes");
+const longBreakMinutes_span = document.getElementById("long-break-minutes");
 let running = false;
+let minusButtons = document.querySelectorAll(".minus-btn");
+let plusButtons = document.querySelectorAll(".plus-btn");
 let timer;
 
-startButton.addEventListener("click", function () {
-  if (!running) {
-    timer = setInterval(remainingTime, 300);
-  } else {
-    resume();
-  }
-});
+main();
 
-resetButton.addEventListener("click", function () {
-  clearInterval(timer);
-  seconds = 60;
-  pomodoroMinutes_span.innerHTML = workMinutes;
-  pomodoroSeconds_span.innerHTML = "00";
-});
+function main() {
+  startButton.addEventListener("click", function () {
+    if (!running) {
+      timer = setInterval(remainingTime, 100);
+    } else {
+      resume();
+    }
+  });
+
+  resetButton.addEventListener("click", function () {
+    clearInterval(timer);
+    running = false;
+    start_p.innerHTML = "Start";
+    seconds = 60;
+    pomodoroMinutes_span.innerHTML = workMinutes;
+    pomodoroSeconds_span.innerHTML = "00";
+  });
+
+  for (let i = 0; i < minusButtons.length; i++) {
+    minusButtons[i].addEventListener("click", function (event) {
+      minusButtonClicked(event.target.parentElement.id);
+    });
+  }
+
+  for (let i = 0; i < plusButtons.length; i++) {
+    plusButtons[i].addEventListener("click", function (event) {
+      plusButtonClicked(event.target.parentElement.id);
+    });
+  }
+}
+
+function plusButtonClicked(id) {
+  console.log(workMinutes);
+  switch (id) {
+    case "work-time":
+      workMinutes += 1;
+      remainingWorkMinutes = workMinutes - 1;
+      workTimeMinutes_span.innerHTML = workMinutes;
+      pomodoroMinutes_span.innerHTML = workMinutes;
+      break;
+    case "short-break":
+      shortBreakMinutes += 1;
+      remainingShortBreakMinutes = shortBreakMinutes - 1;
+      shortBreakMinutes_span.innerHTML = shortBreakMinutes;
+      break;
+    case "long-break":
+      longBreakMinutes += 1;
+      remainingLongBreakMinutes = longBreakMinutes - 1;
+      longBreakMinutes_span.innerHTML = longBreakMinutes;
+      break;
+  }
+}
 
 let remainingTime = function startTimer() {
   running = true;
-  start_p.innerHTML = "Stop";
+  start_p.innerHTML = "Pause";
   seconds -= 1;
   pomodoroMinutes_span.innerHTML = remainingWorkMinutes;
   pomodoroSeconds_span.innerHTML = seconds;
@@ -61,6 +107,32 @@ let remainingTime = function startTimer() {
     seconds = 60;
   }
 };
+
+function minusButtonClicked(id) {
+  switch (id) {
+    case "work-time":
+      if (workMinutes > 1) {
+        workMinutes -= 1;
+        remainingWorkMinutes = workMinutes - 1;
+        workTimeMinutes_span.innerHTML = workMinutes;
+        pomodoroMinutes_span.innerHTML = workMinutes;
+        console.log(workMinutes);
+        break;
+      } else {
+        window.alert("You can't set your worktime under 1 minutes!");
+      }
+    case "short-break":
+      shortBreakMinutes -= 1;
+      remainingShortBreakMinutes = shortBreakMinutes - 1;
+      shortBreakMinutes_span.innerHTML = shortBreakMinutes;
+      break;
+    case "long-break":
+      longBreakMinutes -= 1;
+      remainingLongBreakMinutes = longBreakMinutes - 1;
+      longBreakMinutes_span.innerHTML = longBreakMinutes;
+      break;
+  }
+}
 
 function resume() {
   clearInterval(timer);
