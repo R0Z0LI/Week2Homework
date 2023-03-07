@@ -55,28 +55,6 @@ function main() {
   }
 }
 
-function plusButtonClicked(id) {
-  console.log(workMinutes);
-  switch (id) {
-    case "work-time":
-      workMinutes += 1;
-      remainingWorkMinutes = workMinutes - 1;
-      workTimeMinutes_span.innerHTML = workMinutes;
-      pomodoroMinutes_span.innerHTML = workMinutes;
-      break;
-    case "short-break":
-      shortBreakMinutes += 1;
-      remainingShortBreakMinutes = shortBreakMinutes - 1;
-      shortBreakMinutes_span.innerHTML = shortBreakMinutes;
-      break;
-    case "long-break":
-      longBreakMinutes += 1;
-      remainingLongBreakMinutes = longBreakMinutes - 1;
-      longBreakMinutes_span.innerHTML = longBreakMinutes;
-      break;
-  }
-}
-
 let remainingTime = function startTimer() {
   running = true;
   start_p.innerHTML = "Pause";
@@ -101,6 +79,7 @@ let remainingTime = function startTimer() {
         }
       } else {
         remainingWorkMinutes = workMinutes - 1;
+        pomodoroText.innerHTML = "Pomodoro " + (sessionCounter % 2) + 1;
         sessionCounter++;
       }
     }
@@ -122,12 +101,42 @@ function minusButtonClicked(id) {
         window.alert("You can't set your worktime under 1 minutes!");
       }
     case "short-break":
-      shortBreakMinutes -= 1;
+      if (shortBreakMinutes > 1) {
+        shortBreakMinutes -= 1;
+        remainingShortBreakMinutes = shortBreakMinutes - 1;
+        shortBreakMinutes_span.innerHTML = shortBreakMinutes;
+        break;
+      } else {
+        window.alert("You can't set your short break under 1 minutes!");
+      }
+    case "long-break":
+      if (longBreakMinutes > 1) {
+        longBreakMinutes -= 1;
+        remainingLongBreakMinutes = longBreakMinutes - 1;
+        longBreakMinutes_span.innerHTML = longBreakMinutes;
+        break;
+      } else {
+        window.alert("You can't set your long break under 1 minutes!");
+      }
+  }
+}
+
+function plusButtonClicked(id) {
+  console.log(workMinutes);
+  switch (id) {
+    case "work-time":
+      workMinutes += 1;
+      remainingWorkMinutes = workMinutes - 1;
+      workTimeMinutes_span.innerHTML = workMinutes;
+      pomodoroMinutes_span.innerHTML = workMinutes;
+      break;
+    case "short-break":
+      shortBreakMinutes += 1;
       remainingShortBreakMinutes = shortBreakMinutes - 1;
       shortBreakMinutes_span.innerHTML = shortBreakMinutes;
       break;
     case "long-break":
-      longBreakMinutes -= 1;
+      longBreakMinutes += 1;
       remainingLongBreakMinutes = longBreakMinutes - 1;
       longBreakMinutes_span.innerHTML = longBreakMinutes;
       break;
