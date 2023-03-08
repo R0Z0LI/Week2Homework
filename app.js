@@ -25,8 +25,18 @@ let timer;
 main();
 
 function main() {
+  for (let i = 0; i < minusButtons.length; i++) {
+    minusButtons[i].disabled = false;
+    plusButtons[i].disabled = false;
+  }
+
   startButton.addEventListener("click", function () {
+    for (let i = 0; i < minusButtons.length; i++) {
+      minusButtons[i].disabled = true;
+      plusButtons[i].disabled = true;
+    }
     if (!running) {
+      running = true;
       timer = setInterval(remainingTime, 500);
     } else {
       resume();
@@ -34,6 +44,10 @@ function main() {
   });
 
   resetButton.addEventListener("click", function () {
+    for (let i = 0; i < minusButtons.length; i++) {
+      minusButtons[i].disabled = false;
+      plusButtons[i].disabled = false;
+    }
     clearInterval(timer);
     pomodoroText.innerHTML = "Pomodoro 1";
     running = false;
@@ -59,7 +73,6 @@ function main() {
 }
 
 let remainingTime = function startTimer() {
-  running = true;
   start_p.innerHTML = "Pause";
   seconds -= 1;
   pomodoroMinutes_span.innerHTML = remainingWorkMinutes;
