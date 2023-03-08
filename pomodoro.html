@@ -13,8 +13,19 @@
   </head>
   <body>
     <header><h1>Pomodoro Timer</h1></header>
-    <div class="timer progress-circle">
-      <div class="timer__box">
+    <div class="container">
+      <svg height="300" width="300">
+        <circle
+          id="circle"
+          cx="147"
+          cy="130"
+          r="122"
+          stroke="black"
+          stroke-width="5"
+          fill="transparent"
+        />
+      </svg>
+      <div class="timer">
         <p class="timer__text" id="timer__text">Pomodoro 1</p>
         <div class="timer__content">
           <span id="minute-counter" class="minutes">25</span>:<span
