@@ -37,10 +37,6 @@ main();
 
 function main() {
   console.log(circumference);
-  /*for (let i = 0; i < minusButtons.length; i++) {
-    minusButtons[i].disabled = false;
-    plusButtons[i].disabled = false;
-  }*/
 
   startButton.addEventListener("click", function () {
     for (let i = 0; i < minusButtons.length; i++) {
