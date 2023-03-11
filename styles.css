@@ -26,12 +26,27 @@ header > h1 {
 .timer {
   position: absolute;
   top: 10px;
-  left: 570px;
-  right: 100;
+  left: 31.5%;
   width: 15rem;
   height: 15rem;
   border: 4px solid black;
   border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+  .timer {
+    position: absolute;
+    top: 10px;
+    left: 36.5%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .timer {
+    position: absolute;
+    top: 10px;
+    left: 41.5%;
+  }
 }
 
 .timer__box {

@@ -37,10 +37,10 @@ main();
 
 function main() {
   console.log(circumference);
-  for (let i = 0; i < minusButtons.length; i++) {
+  /*for (let i = 0; i < minusButtons.length; i++) {
     minusButtons[i].disabled = false;
     plusButtons[i].disabled = false;
-  }
+  }*/
 
   startButton.addEventListener("click", function () {
     for (let i = 0; i < minusButtons.length; i++) {
@@ -60,6 +60,7 @@ function main() {
       minusButtons[i].disabled = false;
       plusButtons[i].disabled = false;
     }
+    console.log(remainingWorkMinutes);
     circle.style.strokeDasharray = circumference;
     circle.style.strokeDashoffset = circumference;
     clearInterval(timer);
@@ -69,6 +70,10 @@ function main() {
     shortBreakCounter = 0;
     sessionCounter = 0;
     seconds = 60;
+    totalSec = workMinutes * 60;
+    remainingWorkMinutes = workMinutes - 1;
+    decreasingSeconds = totalSec;
+    console.log("Work mins: " + remainingWorkMinutes);
     pomodoroMinutes_span.innerHTML = workMinutes;
     pomodoroSeconds_span.innerHTML = "00";
   });
@@ -112,6 +117,7 @@ let remainingTime = function startTimer() {
           decreasingSeconds = totalSec;
           remainingWorkMinutes = shortBreakMinutes - 1;
           sessionCounter++;
+          console.log(remainingWorkMinutes);
           shortBreakCounter++;
           pomodoroText.innerHTML = "Short Break ";
         }
@@ -146,7 +152,8 @@ function minusButtonClicked(id) {
         pomodoroMinutes_span.innerHTML = workMinutes;
         break;
       } else {
-        window.alert("You can't set your worktime under 1 minutes!");
+        document.getElementById("work-time__minus-button").disabled = true;
+        window.alert("You can't set your work time under 1 minutes!");
       }
     case "short-break":
       if (shortBreakMinutes > 1) {
@@ -155,6 +162,7 @@ function minusButtonClicked(id) {
         shortBreakMinutes_span.innerHTML = shortBreakMinutes;
         break;
       } else {
+        document.getElementById("short-break__minus-button").disabled = true;
         window.alert("You can't set your short break under 1 minutes!");
       }
     case "long-break":
@@ -164,6 +172,7 @@ function minusButtonClicked(id) {
         longBreakMinutes_span.innerHTML = longBreakMinutes;
         break;
       } else {
+        document.getElementById("long-break__minus-button").disabled = true;
         window.alert("You can't set your long break under 1 minutes!");
       }
   }
@@ -172,6 +181,7 @@ function minusButtonClicked(id) {
 function plusButtonClicked(id) {
   switch (id) {
     case "work-time":
+      document.getElementById("work-time__minus-button").disabled = false;
       workMinutes += 1;
       totalSec = workMinutes * 60;
       decreasingSeconds = totalSec;
@@ -180,11 +190,13 @@ function plusButtonClicked(id) {
       pomodoroMinutes_span.innerHTML = workMinutes;
       break;
     case "short-break":
+      document.getElementById("short-break__minus-button").disabled = false;
       shortBreakMinutes += 1;
       remainingShortBreakMinutes = shortBreakMinutes - 1;
       shortBreakMinutes_span.innerHTML = shortBreakMinutes;
       break;
     case "long-break":
+      document.getElementById("long-break__minus-button").disabled = false;
       longBreakMinutes += 1;
       remainingLongBreakMinutes = longBreakMinutes - 1;
       longBreakMinutes_span.innerHTML = longBreakMinutes;
