@@ -1,4 +1,4 @@
-let workMinutes = 5;
+let workMinutes = 25;
 let totalSec = workMinutes * 60;
 let shortBreakMinutes = 5;
 let shortBreakCounter = 0;
@@ -13,9 +13,9 @@ let decreasingSeconds = totalSec;
 let timer;
 let perc;
 
-let pomodoroText = document.getElementById("timer__text");
-let pomodoroMinutes_span = document.getElementById("minute-counter");
-let pomodoroSeconds_span = document.getElementById("second-counter");
+const pomodoroText = document.getElementById("timer__text");
+const pomodoroMinutes_span = document.getElementById("minute-counter");
+const pomodoroSeconds_span = document.getElementById("second-counter");
 const startButton = document.getElementById("buttons__start");
 const resetButton = document.getElementById("buttons__reset");
 const start_p = document.getElementById("start");
@@ -23,8 +23,8 @@ const itemList = document.querySelector(".settings");
 const workTimeMinutes_span = document.getElementById("work-time-minutes");
 const shortBreakMinutes_span = document.getElementById("short-break-minutes");
 const longBreakMinutes_span = document.getElementById("long-break-minutes");
-let minusButtons = document.querySelectorAll(".minus-btn");
-let plusButtons = document.querySelectorAll(".plus-btn");
+const minusButtons = document.querySelectorAll(".minus-btn");
+const plusButtons = document.querySelectorAll(".plus-btn");
 const circle = document.getElementById("circle");
 
 const radius = circle.r.baseVal.value;
@@ -45,7 +45,7 @@ function main() {
     }
     if (!running) {
       running = true;
-      timer = setInterval(remainingTime, 100);
+      timer = setInterval(remainingTime, 1000);
     } else {
       resume();
     }
@@ -95,8 +95,11 @@ let remainingTime = function startTimer() {
   );
   setProgress(perc);
   pomodoroMinutes_span.innerHTML = remainingWorkMinutes;
-  pomodoroSeconds_span.innerHTML = seconds;
-
+  if (seconds < 10) {
+    pomodoroSeconds_span.innerHTML = "0" + seconds;
+  } else {
+    pomodoroSeconds_span.innerHTML = seconds;
+  }
   if (seconds === 0) {
     remainingWorkMinutes = remainingWorkMinutes - 1;
     if (remainingWorkMinutes === -1) {
@@ -119,7 +122,6 @@ let remainingTime = function startTimer() {
         }
       } else {
         totalSec = workMinutes * 60;
-        console.log(totalSec);
         decreasingSeconds = totalSec;
         remainingWorkMinutes = workMinutes - 1;
         let pomodoroCounter = shortBreakCounter + 1;

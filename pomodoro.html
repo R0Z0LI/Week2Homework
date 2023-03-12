@@ -1,96 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet"
+          href="styles.css" />
     <title>PomodoroTimer</title>
   </head>
+
   <body>
-    <header><h1>Pomodoro Timer</h1></header>
+    <header>
+      <h1>Pomodoro Timer</h1>
+    </header>
     <div class="container">
-      <svg height="300" width="300">
-        <circle
-          id="circle"
-          cx="147"
-          cy="130"
-          r="122"
-          stroke="black"
-          stroke-width="5"
-          fill="transparent"
-        >
+      <svg height="300"
+           width="300">
+        <circle id="circle"
+                cx="150"
+                cy="130"
+                r="122"
+                stroke="black"
+                stroke-width="5"
+                fill="transparent">
       </svg>
       <div class="timer">
-        <p class="timer__text" id="timer__text">Pomodoro 1</p>
+        <p class="timer__text"
+           id="timer__text">Pomodoro 1</p>
         <div class="timer__content">
-          <span id="minute-counter" class="minutes">25</span>:<span
-            id="second-counter"
-            class="seconds"
-            >00</span
-          >
+          <span id="minute-counter"
+                class="minutes">
+            25
+          </span>:<span id="second-counter"
+                class="seconds">00</span>
         </div>
       </div>
     </div>
     <div class="buttons">
-      <button class="button" id="buttons__start">
+      <button class="button"
+              id="buttons__start">
         <p id="start">Start</p>
       </button>
-      <button class="button" id="buttons__reset">
+      <button class="button"
+              id="buttons__reset">
         <p id="reset">Reset</p>
       </button>
     </div>
     <div class="settings">
-      <div id="work-time" class="setting">
+      <div id="work-time"
+           class="setting">
         <p class="setting__item">Pomodoro</p>
-        <span class="minutes" id="work-time-minutes">25</span>:<span
-          class="seconds"
-          id="work-time-seconds"
-          >00</span
-        ><br />
-        <button
-          class="setting__item fa fa-minus-circle minus-btn"
-          id="work-time__minus-button"
-        ></button>
-        <button
-          class="setting__item fa fa-plus-circle plus-btn"
-        ></button>
+        <span class="minutes"
+              id="work-time-minutes">25</span>:<span class="seconds"
+              id="work-time-seconds">00</span><br />
+        <button class="setting__item fa fa-minus-circle minus-btn"
+                id="work-time__minus-button"></button>
+        <button class="setting__item fa fa-plus-circle plus-btn"></button>
       </div>
-      <div id="short-break" class="setting">
+      <div id="short-break"
+           class="setting">
         <p class="setting__item">Short Break</p>
-        <span class="minutes" id="short-break-minutes">5</span>:<span
-          class="seconds"
-          id="short-break-seconds"
-          >00</span
-        ><br />
-        <button
-          class="setting__item fa fa-minus-circle minus-btn"
-          id="short-break__minus-button"
-        ></button>
-        <button
-          class="setting__item fa fa-plus-circle plus-btn"
-        ></button>
+        <span class="minutes"
+              id="short-break-minutes">5</span>:<span class="seconds"
+              id="short-break-seconds">00</span><br />
+        <button class="setting__item fa fa-minus-circle minus-btn"
+                id="short-break__minus-button"></button>
+        <button class="setting__item fa fa-plus-circle plus-btn"></button>
       </div>
-      <div id="long-break" class="setting">
+      <div id="long-break"
+           class="setting">
         <p class="setting__item">Long Break</p>
-        <span class="minutes" id="long-break-minutes">15</span>:<span
-          class="seconds"
-          id="long-break-seconds"
-          >00</span
-        ><br />
-        <button
-          class="setting__item fa fa-minus-circle minus-btn"
-          id="long-break__minus-button"
-        ></button>
-        <button
-          class="setting__item fa fa-plus-circle plus-btn"
-        ></button>
+        <span class="minutes"
+              id="long-break-minutes">15</span>:<span class="seconds"
+              id="long-break-seconds">00</span><br />
+        <button class="setting__item fa fa-minus-circle minus-btn"
+                id="long-break__minus-button"></button>
+        <button class="setting__item fa fa-plus-circle plus-btn"></button>
       </div>
     </div>
-    <script src="app.js" charset="utf-8"></script>
+    <script src="app.js"
+            charset="utf-8"></script>
   </body>
+
 </html>
