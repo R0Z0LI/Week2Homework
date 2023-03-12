@@ -1,9 +1,9 @@
-let workMinutes = 1;
+let workMinutes = 25;
 let totalSec = workMinutes * 60;
 let shortBreakMinutes = 5;
 let shortBreakCounter = 0;
 let sessionCounter = 0;
-let longBreakMinutes = 15;
+let longBreakMinutes = 25;
 let seconds = 60;
 let remainingWorkMinutes = workMinutes - 1;
 let remainingShortBreakMinutes = shortBreakMinutes - 1;
