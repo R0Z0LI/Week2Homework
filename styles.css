@@ -82,9 +82,3 @@ header > h1 {
 .setting__item {
   margin: 1rem 0.3rem;
 }
-
-.circle {
-  transition: 0.5s;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-}

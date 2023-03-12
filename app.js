@@ -1,4 +1,4 @@
-let workMinutes = 25;
+let workMinutes = 1;
 let totalSec = workMinutes * 60;
 let shortBreakMinutes = 5;
 let shortBreakCounter = 0;
@@ -171,7 +171,6 @@ function minusButtonClicked(id) {
         }
         break;
       } else {
-        document.getElementById("long-break__minus-button").disabled = true;
         window.alert("You can't set your long break under 1 minutes!");
       }
   }
