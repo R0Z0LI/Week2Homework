@@ -36,8 +36,6 @@ circle.style.strokeDashoffset = circumference;
 main();
 
 function main() {
-  console.log(circumference);
-
   startButton.addEventListener("click", function () {
     for (let i = 0; i < minusButtons.length; i++) {
       minusButtons[i].disabled = true;
@@ -56,7 +54,6 @@ function main() {
       minusButtons[i].disabled = false;
       plusButtons[i].disabled = false;
     }
-    console.log(remainingWorkMinutes);
     circle.style.strokeDasharray = circumference;
     circle.style.strokeDashoffset = circumference;
     clearInterval(timer);
@@ -69,7 +66,6 @@ function main() {
     totalSec = workMinutes * 60;
     remainingWorkMinutes = workMinutes - 1;
     decreasingSeconds = totalSec;
-    console.log("Work mins: " + remainingWorkMinutes);
     pomodoroMinutes_span.innerHTML = workMinutes;
     pomodoroSeconds_span.innerHTML = "00";
   });
@@ -116,7 +112,6 @@ let remainingTime = function startTimer() {
           decreasingSeconds = totalSec;
           remainingWorkMinutes = shortBreakMinutes - 1;
           sessionCounter++;
-          console.log(remainingWorkMinutes);
           shortBreakCounter++;
           pomodoroText.innerHTML = "Short Break ";
         }
