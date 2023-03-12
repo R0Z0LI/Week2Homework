@@ -144,13 +144,14 @@ function minusButtonClicked(id) {
         workMinutes -= 1;
         totalSec = workMinutes * 60;
         decreasingSeconds = totalSec;
-        console.log(totalSec);
         remainingWorkMinutes = workMinutes - 1;
         workTimeMinutes_span.innerHTML = workMinutes;
         pomodoroMinutes_span.innerHTML = workMinutes;
+        if (workMinutes == 1) {
+          document.getElementById("work-time__minus-button").disabled = true;
+        }
         break;
       } else {
-        document.getElementById("work-time__minus-button").disabled = true;
         window.alert("You can't set your work time under 1 minutes!");
       }
     case "short-break":
@@ -158,9 +159,11 @@ function minusButtonClicked(id) {
         shortBreakMinutes -= 1;
         remainingShortBreakMinutes = shortBreakMinutes - 1;
         shortBreakMinutes_span.innerHTML = shortBreakMinutes;
+        if (shortBreakMinutes == 1) {
+          document.getElementById("short-break__minus-button").disabled = true;
+        }
         break;
       } else {
-        document.getElementById("short-break__minus-button").disabled = true;
         window.alert("You can't set your short break under 1 minutes!");
       }
     case "long-break":
@@ -168,6 +171,9 @@ function minusButtonClicked(id) {
         longBreakMinutes -= 1;
         remainingLongBreakMinutes = longBreakMinutes - 1;
         longBreakMinutes_span.innerHTML = longBreakMinutes;
+        if (longBreakMinutes == 1) {
+          document.getElementById("long-break__minus-button").disabled = true;
+        }
         break;
       } else {
         document.getElementById("long-break__minus-button").disabled = true;
